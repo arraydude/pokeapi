@@ -1,24 +1,25 @@
-import React, {useState} from "react";
-import Bank from "../bank";
-import {PokemonResult} from "../../types";
-import ListPokemons from "../list/list";
+import React, { useState } from "react";
+import { PokemonResult } from "types";
 
-import styles from './styles.module.scss'
+import Bank from "components/bank";
+import ListPokemons from "components/list";
+
+import styles from "./styles.module.scss";
 
 function Game() {
-    const [selectedPokemons, setSelectedPokemons] = useState<PokemonResult[]>([])
+  const [selectedPokemons, setSelectedPokemons] = useState<PokemonResult[]>([]);
 
-    return (
-        <div>
-            <ListPokemons onChange={(pokemons) => setSelectedPokemons(pokemons)}/>
+  return (
+    <div>
+      <ListPokemons onChange={(pokemons) => setSelectedPokemons(pokemons)} />
 
-            <div className={styles.arena}>
-                {selectedPokemons.map(pokemon => (
-                    <Bank pokemon={pokemon} />
-                ))}
-            </div>
-        </div>
-    )
+      <div className={styles.arena}>
+        {selectedPokemons.map((pokemon) => (
+          <Bank pokemon={pokemon} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
-export default Game
+export default Game;
